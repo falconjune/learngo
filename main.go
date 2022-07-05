@@ -11,3 +11,5 @@ func main() {
 	fmt.Println("hello world!") //export 하기 위해서 대문자로 시작되는 것.
 	something.SayHello()
 }
+
+//test
