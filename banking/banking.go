@@ -1,5 +1,7 @@
 package banking
 
+import "errors"
+
 //Account struct
 type Account struct {
 	owner   string
@@ -12,12 +14,26 @@ func NewAccount(owner1 string) *Account {
 	return &account
 }
 
+var noMoney = errors.New("Can't withdraw")
+
 //reciever를 통해 method와 비슷한 기능을 하는 함수를 제작함.
-func (a Account) Deposit(amount int) {
+func (a *Account) Deposit(amount int) {
 	a.balance += amount
 }
 
 //balance만을 보여주는 함수를 작성함.
 func (a Account) Balance() int {
 	return a.balance
+}
+
+func (a *Account) Withdraw(amount int) error {
+	if a.balance < amount {
+		return noMoney
+	}
+	a.balance -= amount
+	return nil
+}
+
+func (a *Account) Changeowner(cowner string) {
+	a.owner = cowner
 }
