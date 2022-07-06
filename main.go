@@ -4,6 +4,8 @@ package main //프로젝트를 컴파일 하고 싶다는 뜻이고 그것을 �
 import (
 	"fmt" //formatting을 위한 package이다.
 	"strings"
+
+	"github.com/kolonist/learngo/banking"
 )
 
 //함수를 선언할때 인자의 타입과 return 값의 타입을 모두 정해져야 됨.
@@ -109,6 +111,15 @@ func main() {
 	favFood1 := []string{"kimchi", "ramen"}
 	kolonist2 := person{name: "MINJUN", age: 23, favFood: favFood1}
 	fmt.Println(kolonist2.name)
+
+	//다른 package에 있는 struct를 통해 구조체를 만들 수 있음. 안에 있는 것도 소문자로 시작하면 pri임.
+	//그로 인해 struct가 대문자여서 접근 가능하더라도 내부 원소는 제어할 수 없음.
+
+	//다만 외부인이 마음대로 바꿀 수 없게 하기 위해 private으로 변경한 다음 생성자 같은 함수를 따로 만든다.
+	account := banking.NewAccount("minjun")
+	fmt.Println(account)
+	account.Deposit(10)
+	fmt.Println(account.Balance())
 }
 
 //test123
