@@ -16,6 +16,11 @@ func lenAndUpper(name string) (int, string) {
 	return len(name), strings.ToUpper(name)
 }
 
+//인자를 한 번 여러개 보낼수도 있다. 단순히 출력만 하고 값을 return 해주지 않음.
+func repeatMe(name ...string) {
+	fmt.Println(name)
+}
+
 // a3 := 4 변수를 선언하는데에는 축약형이 있는데 이는 func 안에서만 가능하고 밖에서는 축약형을 사용할 수 없음.
 
 func main() {
@@ -30,6 +35,7 @@ func main() {
 	totalLength, _ = lenAndUpper("teset_")            //만약 하나의 값만 받고 싶다면 _을 통해 값을 무시할 수 있다.
 	//변수 초기화는 언제나 할 수 있지만, 한 번 선언한 변수는 타입을 변경할 수 없음.
 	fmt.Println(totalLength, upperName)
+	repeatMe("abc", "def", "ghi")
 }
 
 //test123
