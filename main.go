@@ -29,6 +29,54 @@ func repeatMe(name ...string) {
 	fmt.Println(name)
 }
 
+func superAdd(numbers ...int) {
+	for index, number := range numbers {
+		fmt.Println(index, number)
+	}
+}
+
+func superAdd2(numbers ...int) int {
+	total := 0
+	for _, number := range numbers {
+		total += number
+	}
+	return total
+}
+
+func superAdd3(numbers ...int) int {
+	total := 0
+	for i := 0; i < len(numbers); i++ {
+		total += numbers[i]
+	}
+	return total
+}
+
+func canIdrink(age int) bool {
+	if koreanAge := age + 2; koreanAge < 18 {
+		return false
+	}
+	return true
+}
+
+func canIdrink2(age int) bool {
+	switch koreanAge := age + 2; koreanAge {
+	case 18:
+		return false
+	case 50:
+		return true
+	case 0:
+		return false
+	}
+	return false //예외가 있을 수 있으므로 이를 작성해주어야 됨.
+}
+
+//go에는 c언어의 struct와 같은 구조체가 있음.
+type person struct {
+	name    string
+	age     int
+	favFood []string
+}
+
 // a3 := 4 변수를 선언하는데에는 축약형이 있는데 이는 func 안에서만 가능하고 밖에서는 축약형을 사용할 수 없음.
 
 func main() {
@@ -44,6 +92,23 @@ func main() {
 	//변수 초기화는 언제나 할 수 있지만, 한 번 선언한 변수는 타입을 변경할 수 없음.
 	fmt.Println(totalLength, upperName)
 	repeatMe("abc", "def", "ghi")
+	superAdd(1, 2, 3, 4, 5)
+	fmt.Println(superAdd2(1, 1, 3))
+	fmt.Println(superAdd2(1, 1, 5))
+	fmt.Println((canIdrink(14)))
+	//Go에서도 pointer를 지원함.
+	a := 1
+	b := &a
+	*b = 20
+	fmt.Println(a)
+	//Python의 map과 비슷한 것이 있음. 다만 아예 같은 것은 아님.
+	kolonist := map[string]string{"name": "minjun", "age": "23"}
+	for key, value := range kolonist {
+		fmt.Println(key, value)
+	}
+	favFood1 := []string{"kimchi", "ramen"}
+	kolonist2 := person{name: "MINJUN", age: 23, favFood: favFood1}
+	fmt.Println(kolonist2.name)
 }
 
 //test123
