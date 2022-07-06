@@ -16,6 +16,14 @@ func lenAndUpper(name string) (int, string) {
 	return len(name), strings.ToUpper(name)
 }
 
+//return을 끝에 붙이지 않고 함수 return 값 타입 선언하는데에서 설정할수 있음.
+func lenAndUpper2(name string) (length int, uppercase2 string) {
+	defer fmt.Println(("I'm Done")) //func이 끝난 다음에 코드를 exec할 수 있음.
+	length = len(name)              //위에서 타입을 선언해주었으므로 축약형이나 타입을 선언해줄 필요는 없음.
+	uppercase2 = strings.ToUpper(name)
+	return
+}
+
 //인자를 한 번 여러개 보낼수도 있다. 단순히 출력만 하고 값을 return 해주지 않음.
 func repeatMe(name ...string) {
 	fmt.Println(name)
