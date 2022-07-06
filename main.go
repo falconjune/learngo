@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/kolonist/learngo/banking"
+	"github.com/kolonist/learngo/mydict"
 )
 
 //함수를 선언할때 인자의 타입과 return 값의 타입을 모두 정해져야 됨.
@@ -126,6 +127,19 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-}
 
-//test123
+	Dictionary := mydict.Dictionary{"first": "First word"}
+	err = Dictionary.Add("Hello", "Greeting")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("추가 되었음")
+	}
+
+	definition, err := Dictionary.Search("first")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println((definition))
+	}
+}
