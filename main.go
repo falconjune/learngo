@@ -119,7 +119,13 @@ func main() {
 	account := banking.NewAccount("minjun")
 	fmt.Println(account)
 	account.Deposit(10)
-	fmt.Println(account.Balance())
+	fmt.Println(account.Balance()) //다만 여기서 실행이 안되는 것을 확인할 수 있음.
+	//banking.go에서 메소드를 만들면 안전을 위해서 무조건 복사본을 활용함. 그렇기에 pointer 개념을 활용하여 원본에 접근하는 것이 필요함.
+	err := account.Withdraw(20)
+	//except와 같은 개념이 없으므로 err처리를 따로 해주어야 됨.
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 //test123
